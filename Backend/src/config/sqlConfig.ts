@@ -1,7 +1,10 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export const sqlConfig = {
     user: 'sa',
     password: '09909090Mkk',
-    database: '',
+    database: 'SHOPSIS',
     server:'DESKTOP-B56002J\\KIMWETICHKKORIR',
   
     pool: {
