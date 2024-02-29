@@ -1,0 +1,76 @@
+/* Styling for the tours container */
+.tours {
+    max-width: 600px;
+    margin: 0 auto;
+    /* Center the tours container */
+    /* background-color: #f5f5f5; */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .successMsg {
+    text-align: center;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for form labels */
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Styling for form inputs and select */
+  input,
+  select {
+    width: 100%;
+    height: 20%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 10%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: none;
+  }
+  
+  /* Styling for the button */
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Disable button when form is invalid */
+  .btn button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  
+  /* Media query for responsiveness */
+  @media (max-width: 600px) {
+  
+    /* Adjust styles for smaller screens */
+    .tours {
+      padding: 10px;
+    }
+  }
