@@ -10,5 +10,5 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent {
-
+title='Shopie Cafe'
 }
