@@ -1,0 +1,25 @@
+<nav>
+    <div class="nav-pages">
+      <div class="top-title">
+        <i id="menu-bar" class="bi bi-list" (click)="toggleMenu()"></i>
+        <div class="Title"><span>SHO</span>{{ title }}</div>
+      </div>
+      <div class="menu">
+        <ul [ngClass]="{ show: isMenuOpen }">
+          <li [routerLink]="['/']" routerLinkActive="active">Home</li>
+          <li [routerLink]="['/register']" routerLinkActive="active"*ngIf="!isLoggedIn">Register</li>
+          <li (click)="navigatetoLogin()" *ngIf="!isLoggedIn">Login</li>
+          <li (click)="logout()" *ngIf="isLoggedIn">Logout</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+  />
+  <router-outlet></router-outlet>
+  
+  <!-- <router-outlet></router-outlet> -->
+  

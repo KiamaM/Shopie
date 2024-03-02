@@ -1,0 +1,70 @@
+<!-- <div class="wrapper"> -->
+    <div class="tours">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <div *ngIf="showSuccessMessage" class="successMsg">{{ successMsg }}</div>
+      
+          <label for="tourType">Tour type:</label>
+          <select name="tourType" id="tourType" formControlName="tourType" required>
+            <option value="">--select type--</option>
+            <option value="Hikes">Hikes</option>
+            <option value="Cultural excursions">Cultural excursions</option>
+            <option value="Weekend getaways">Weekend getaways</option>
+          </select>
+      
+          <label for="image">Image:</label>
+          <input
+            id="image"
+            formControlName="image"
+            placeholder="Paste image link"
+            required
+          />
+      
+          <label for="destination">Destination:</label>
+          <input
+            type="text"
+            id="destination"
+            formControlName="destination"
+            placeholder="Enter Destination"
+            required
+          />
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            placeholder="Describe the tour"
+            required
+          ></textarea>
+      
+          <label for="price">Price:</label>
+          <input
+            type="string"
+            id="price"
+            formControlName="price"
+            placeholder="Enter Price"
+            required
+          />
+          <label for="startDate">Start Date:</label>
+          <input
+            type="date"
+            id="startDate"
+            formControlName="startDate"
+            placeholder="Enter Start Date"
+            required
+          />
+      
+          <label for="endDate">End Date:</label>
+          <input
+            type="date"
+            id="endDate"
+            formControlName="endDate"
+            placeholder="Enter End Date"
+            required
+          />
+      
+          <div class="btn">
+            <button type="submit" [disabled]="productForm.invalid">Create Product</button>
+          </div>
+        </form>
+      </div>
+      <!-- </div> -->
+      
