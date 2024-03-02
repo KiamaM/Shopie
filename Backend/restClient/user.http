@@ -1,0 +1,63 @@
+### Register user
+POST http://localhost:5000/users/register/
+Content-Type: application/json
+
+{
+    "firstName": "Daniel",
+    "lastName": "Kiama",
+    "email": "danielkima@gmail.com",
+    "password": "12345"
+}
+
+
+### login 
+POST http://localhost:5000/users/login/
+Content-Type: application/json
+
+{
+    "email": "janengene@gmail.com",
+    "password": "123456"
+}
+
+
+### fetching all users
+GET http://localhost:5000/users/all
+
+
+### getSingle USer
+GET http://localhost:5000/users/singleUser/dfcc2cba-f698-449b-9452-ae2dc4407c2a
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkZmNjMmNiYS1mNjk4LTQ0OWItOTQ1Mi1hZTJkYzQ0MDdjMmEiLCJmaXJzdE5hbWUiOiJKYW5lIiwibGFzdE5hbWUiOiJOZ2VuZSIsImVtYWlsIjoiamFuZW5nZW5lQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIndlbGNvbWVkIjpmYWxzZSwiaWF0IjoxNzA5MjEwODA2LCJleHAiOjE3MTI4MTA4MDZ9._SP69aEHesy49NZPfku6bc_mnWIhiYYaSyTuHk7WpqE
+### deleting User
+DELETE http://localhost:5000/users/delete/dfcc2cba-f698-449b-9452-ae2dc4407c2a
+
+
+### updateUser
+PUT http://localhost:5000/users/update/3ae168ec-2e37-4acf-be4e-95b42ab8b045
+Content-Type: application/json
+
+{
+    
+    "firstName": "Godwin",
+    "lastName": "Kilimo",
+    "email": "danielkima@gmail.com"
+    
+}
+
+### checking user details
+GET http://localhost:5000/users/UserDetails
+token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzYTZkOTcxYy02MDY2LTQyNjYtOThjMi0xYWMxN2EwNmI5MjIiLCJmaXJzdE5hbWUiOiJHb2R3aW4iLCJsYXN0TmFtZSI6IktpbGltbyIsImVtYWlsIjoiaXNhYWNraXB0b29AZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwicmVzZXRUb2tlbiI6bnVsbCwid2VsY29tZWQiOmZhbHNlLCJpYXQiOjE3MDkxODg5NDUsImV4cCI6MTcxMjc4ODk0NX0.tJU41xEtaOD8E7-_XYweY2UEvqO5YmOiWXG3D4kyMic
+
+
+### reset password
+POST http://localhost:5000/users/reset-password/
+Content-Type: application/json
+
+{
+    "email": "janengene@gmail.com",
+    "newPassword": "123456"
+}
+
+    # "firstName": "Meshack",
+    # "lastName": "Korir",
+    # "email": "emmanuelkipsang@gmail.com",
+    # "password": "12345"
