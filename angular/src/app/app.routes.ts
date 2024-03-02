@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 export const routes: Routes = [
     {
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: '', component: LandingPageComponent},
     {path:'navbar',component:NavbarComponent},
     {path:'register',component:RegisterComponent},
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    {path:'reset', component:ResetComponent}
 ];
