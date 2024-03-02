@@ -1,0 +1,43 @@
+POST http://localhost:4500/products
+Content-Type: application/json
+
+{
+    "productId":"rettttrrtutuutuututut",
+    "productName":"Uji",
+    "description":"A hot cup of porridge",
+    "category":"Hot beversges",
+    "stockQuantity":3,
+    "regularPrice":245,
+    "salePrice":235,
+    "image":"dfcddbbjrbjbrg"
+}
+
+
+###
+GET  http://localhost:4500/products
+Content-Type: application/json
+
+
+###
+GET  http://localhost:4500/products/1fc7b941-0af0-4370-9ca9-1f629760
+Content-Type: application/json
+
+
+###
+DELETE   http://localhost:4500/products/1fc7b941-0af0-4370-9ca9-1f6297606b66
+Content-Type: application/json
+
+
+###
+PUT    http://localhost:4500/products/98150e13-a20f-4790-a97c-22363828a0
+Content-Type: application/json
+
+{
+    "productName": "Coffee",
+    "description":"A cold cup of coffee",
+    "category":"Tea",
+    "stockQuantity":3,
+    "regularPrice":245,
+    "salePrice":235,
+    "image":"dfcddbbjrbjbrg"
+}

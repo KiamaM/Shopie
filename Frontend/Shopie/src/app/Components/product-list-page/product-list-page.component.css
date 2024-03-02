@@ -1,0 +1,49 @@
+.allProductsDiv{
+width:100vw;
+/* border: 1px solid blue; */
+display: flex;
+justify-content: space-around;
+}
+
+.titleDiv{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+
+.productCard{
+    width: 20%;
+    height: 100%;
+    padding-top: 50px;
+    /* border: 1px solid blue; */
+}
+
+.productCard img{
+    width: 20vw;
+}
+
+.productDescDiv{
+    text-align: center;
+    width: 20vw;
+    height: 15vh;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #CFD74D;
+    color: #31380C;
+}
+
+.productDescDiv button{
+    width: 50%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #016241;
+    color: white;
+    border: none;
+}
