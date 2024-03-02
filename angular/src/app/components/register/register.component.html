@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="register">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="form-container">
+        <div><h2 class="form-title">{{title}}</h2></div>
+        <div *ngIf="msgVisible" class="errorMsg">{{ errorMsg }}</div>
+        <div *ngIf="msgVisible2" class="successMsg">{{ successMsg }}</div>
+        
+        <div class="form-group">
+            <input type="text" formControlName="fname" class="form-input" placeholder="*first name">
+            <div *ngIf="registerForm.get('fname')?.invalid && registerForm.get('fname')?.touched">first name required</div>
+        </div>
+        <div class="form-group">
+            <input type="text" formControlName="lname" class="form-input" placeholder="*last name">
+            <div *ngIf="registerForm.get('lname')?.invalid && registerForm.get('lname')?.touched">last name required</div>
+        </div>
+        <div class="form-group">
+            <input type="email" formControlName="email" class="form-input" placeholder="*email">
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Email is required</div>
+        </div>       
+        <div class="form-group">
+            <input type="password" formControlName="password" class="form-input" placeholder="*password">
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Password is required</div>
+        </div>
+        <div class="form-group" id ="reg-btn-section">
+            <input type="submit" [disabled]="registerForm.invalid" class="form-submit" value="Create Account">
+            <a class="form-link">Proceed to login?</a>
+        </div>
+    </form>
+</div>
+
