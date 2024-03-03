@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,FormsModule, ReactiveFormsModule, NavbarComponent],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule, NavbarComponent, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

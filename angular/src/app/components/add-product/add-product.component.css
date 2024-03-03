@@ -1,76 +1,154 @@
-/* Styling for the tours container */
-.tours {
-    max-width: 600px;
-    margin: 0 auto;
-    /* Center the tours container */
-    /* background-color: #f5f5f5; */
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.products {
+  font-family: 'Arial', sans-serif;
+  background-color:
+    #e7e7e3;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
+}
+
+.form-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-section input,
+.form-section select {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-section textarea {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-and-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.image-upload-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-upload-section label {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.image-upload-section input {
+  display: none;
+}
+
+.image-upload-section #drop-area {
+  border: 2px dashed #ddd;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30%;
+  padding: 20px;
+}
+
+button {
+  border: 1px solid #006241;
+  color: #333;
+  width: 80px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #006241;
+  color: white;
+}
+
+/* Responsiveness */
+@media(max-width:780px){
+  form{
+    flex-direction: column;
+    width: 90%;
   }
-  
-  .successMsg {
-    text-align: center;
-    padding: 10px;
-    background-color: green;
-    color: white;
-    border-radius: 6px;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  /* Styling for form labels */
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  /* Styling for form inputs and select */
-  input,
-  select {
-    width: 100%;
-    height: 20%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 10%;
-    padding: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    resize: none;
-  }
-  
-  /* Styling for the button */
-  .btn {
+  .form-section{
     display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
     justify-content: center;
   }
-  
-  .btn button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  .price{
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
   }
-  
-  /* Disable button when form is invalid */
-  .btn button:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
+  .price-div{
+width: 100%;
   }
-  
-  
-  /* Media query for responsiveness */
-  @media (max-width: 600px) {
-  
-    /* Adjust styles for smaller screens */
-    .tours {
-      padding: 10px;
-    }
+  .image-upload-section {
+    width: 100%;
   }
+  #drop-area{
+    width: 60%;
+    padding: 10px;
+  }
+  button{
+    width: 100%;
+  }
+
+}

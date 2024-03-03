@@ -10,7 +10,10 @@
           <li [routerLink]="['/register']" routerLinkActive="active"*ngIf="!isLoggedIn">Register</li>
           <li (click)="navigatetoLogin()" *ngIf="!isLoggedIn">Login</li>
           <li (click)="logout()" *ngIf="isLoggedIn">Logout</li>
+          <li> Join as Buyer</li>
+          <li [routerLink]="['/add-product']">Join as Seller</li>
         </ul>
+
       </div>
     </div>
   </nav>
