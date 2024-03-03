@@ -10,8 +10,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './admin-page.component.css'
 })
 export class AdminPageComponent {
+  isSidebarOpen = false;
   isSearchDivVisible=false;
   searchInput: string = '';
+
 
 toggleSearchDiv(){
   this.isSearchDivVisible = !this.isSearchDivVisible;
@@ -23,5 +25,16 @@ performSearch(){
 
   this.searchInput = ''; //reseting input
     this.isSearchDivVisible = false;
+}
+
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+  
+  setTimeout(() => {
+    this.closeSidebar();
+  }, 3000)
+}
+closeSidebar() {
+  this.isSidebarOpen = false;
 }
 }

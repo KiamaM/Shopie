@@ -1,40 +1,68 @@
 <div class="admin-wrapper">
-    <div class="adminPage">
-        <div class="sidebar">
-            <ul>
-                <li routerLink="logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</li>
-                <li routerLink="dashboard"><i class="fa-solid fa-table-columns"></i>Dashboard</li>
-                <li routerLink="all-products"><i class="fa-solid fa-mug-hot"></i>All products</li>
-                <li routerLink="order-list"><i class="fa-solid fa-clipboard-list"></i>Order list</li>
-            </ul>
-        </div>
+  <div class="adminPage">
+    <div class="sidebar">
+      <ul>
+        <li routerLink="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>Logout
+        </li>
+        <li routerLink="dashboard">
+          <i class="fa-solid fa-table-columns"></i>Dashboard
+        </li>
+        <li routerLink="all-products">
+          <i class="fa-solid fa-mug-hot"></i>All products
+        </li>
+        <li routerLink="order-list">
+          <i class="fa-solid fa-clipboard-list"></i>Order list
+        </li>
+      </ul>
+    </div>
+    <div class="modal-wrapper" *ngIf="isSidebarOpen" (click)="toggleSidebar()" [class.hidden]="!isSidebarOpen">
+        <div class="sidebar-modal" (click)="$event.stopPropagation()">
+        <ul>
+          <li routerLink="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>Logout
+          </li>
+          <li routerLink="dashboard">
+            <i class="fa-solid fa-table-columns"></i>Dashboard
+          </li>
+          <li routerLink="all-products">
+            <i class="fa-solid fa-mug-hot"></i>All products
+          </li>
+          <li routerLink="order-list">
+            <i class="fa-solid fa-clipboard-list"></i>Order list
+          </li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="container">
-            <div class="nav">
-                <!-- <h1>Hello</h1> -->
-                <div class="search-icon" (click)="toggleSearchDiv()">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div class="search-div" *ngIf="isSearchDivVisible">
-                    <input type="text" placeholder="Search" >
-                    <i (click)="performSearch()" class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div class="account">
-                    <h3>Admin</h3>
-                </div>
-            </div>
-            <div class="content">
-                <router-outlet></router-outlet>
-            </div>
-       <div class="search-results">
+    <div class="container">
+      <div class="nav">
+        <div class="nav-toggle-bar" (click)="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <!-- <h1>Hello</h1> -->
+        <div class="search-icon" (click)="toggleSearchDiv()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="search-div" *ngIf="isSearchDivVisible">
+          <input type="text" placeholder="Search here" />
+          <i (click)="performSearch()" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="account">
+          <h3>Admin</h3>
+        </div>
+      </div>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="search-results">
         <!-- <div *ngFor="let product of filteredProducts">
         <div>{{product.name}}</div>
         <div>{{product.description}}</div>
         <div>{{product.price}}</div>
         </div> -->
-       </div>
-        </div>
+      </div>
     </div>
-
+  </div>
 </div>
 <!-- <router-outlet></router-outlet> -->
