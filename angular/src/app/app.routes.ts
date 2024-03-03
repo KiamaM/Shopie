@@ -32,5 +32,6 @@ export const routes: Routes = [
 children:[
     {path:'page',component:UserPageComponent},
     {path:'products',component:AllProductsComponent}
-]}
+]},
+{ path: 'add-product', component: AddProductComponent },
 ]

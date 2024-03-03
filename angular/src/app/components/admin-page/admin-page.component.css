@@ -32,7 +32,7 @@
     margin-bottom: 15px;
     cursor: pointer;
     padding: 20px;
-    width: 70%;
+    width: 80%;
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -45,7 +45,9 @@
     transition: ease-in-out;
     color: white;
 }
-
+.sidebar li:active{
+    background-color: #006241;
+}
 .container {
     flex: 1;
     /* padding:0px 20px; */
