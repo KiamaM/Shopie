@@ -1,7 +1,7 @@
 .products {
   font-family: 'Arial', sans-serif;
-  background-color: 
-  #e7e7e3 ;
+  background-color:
+    #e7e7e3;
   margin: 0;
   padding: 0;
   display: flex;
@@ -29,7 +29,7 @@ form {
 
 .form-section {
   flex: 1;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 
 .form-section label {
@@ -39,8 +39,7 @@ form {
 }
 
 .form-section input,
-.form-section select
- {
+.form-section select {
   width: calc(100% - 16px);
   padding: 8px;
   margin-bottom: 16px;
@@ -48,7 +47,8 @@ form {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.form-section textarea{
+
+.form-section textarea {
   width: calc(100% - 16px);
   padding: 8px;
   margin-bottom: 16px;
@@ -58,18 +58,19 @@ form {
   resize: none;
 }
 
-.price{
-display: flex;
-justify-content: center;
-align-items: center;
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.img-and-btn{
+.img-and-btn {
   flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .image-upload-section {
   flex: 1;
   display: flex;
@@ -93,7 +94,8 @@ align-items: center;
   cursor: pointer;
   border-radius: 6px;
 }
-.btn{
+
+.btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,14 +104,51 @@ align-items: center;
 }
 
 button {
-  background-color: #006241;
-  color: #fff;
+  border: 1px solid #006241;
+  color: #333;
+  width: 80px;
+  height: 40px;
   padding: 10px;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
+  text-align: center;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #006241;
+  color: white;
+}
+
+/* Responsiveness */
+@media(max-width:780px){
+  form{
+    flex-direction: column;
+    width: 90%;
+  }
+  .form-section{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .price{
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  .price-div{
+width: 100%;
+  }
+  .image-upload-section {
+    width: 100%;
+  }
+  #drop-area{
+    width: 60%;
+    padding: 10px;
+  }
+  button{
+    width: 100%;
+  }
+
 }
