@@ -6,6 +6,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { ResetComponent } from './components/reset/reset.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { AllProductsComponent } from './components/all-products/all-products.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 export const routes: Routes = [
     {
@@ -18,5 +21,9 @@ export const routes: Routes = [
     {path:'reset', component:ResetComponent},
     {path:'admin',component:AdminPageComponent, 
      children: [
-        { path: 'add-product', component: AddProductComponent }]}
+        { path: 'add-product', component: AddProductComponent },
+        {path:'dashboard',component:DashboardComponent},
+    {path:'all-products',component:AllProductsComponent},
+    {path:'order-list', component:OrderListComponent}
+]}
 ]

@@ -36,3 +36,36 @@ align-items: center;
  align-items: center;
  justify-content: center;   
 }
+.app-navbar {
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  .nav-pages {
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  /* ... Other styles ... */
+  
+  /* Responsiveness */
+  @media (max-width: 780px) {
+    .app-navbar {
+      width: 100%;
+    }
+  
+    .nav-pages {
+      width: 100%;
+    }
+  
+    .section{
+        flex-direction: column;
+    }
+    .about-us-wrapper{
+        flex-direction: column;
+    }
+    .about-img img{
+        width:100vw;
+    }
+    .app-footer{
+        flex-wrap: wrap;
+    }
+}
