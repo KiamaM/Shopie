@@ -9,6 +9,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +27,10 @@ export const routes: Routes = [
         {path:'dashboard',component:DashboardComponent},
     {path:'all-products',component:AllProductsComponent},
     {path:'order-list', component:OrderListComponent}
+]},
+{path:'user/user_id',component:UserDashboardComponent,
+children:[
+    {path:'page',component:UserPageComponent},
+    {path:'products',component:AllProductsComponent}
 ]}
 ]

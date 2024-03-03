@@ -1,26 +1,27 @@
-<div class="admin-wrapper">
-    <div class="adminPage">
+<div class="user-wrapper">
+    <div class="userPage">
         <div class="sidebar">
             <ul>
-                <li routerLink="logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</li>
-                <li routerLink="dashboard"><i class="fa-solid fa-table-columns"></i>Dashboard</li>
-                <li routerLink="all-products"><i class="fa-solid fa-mug-hot"></i>All products</li>
-                <li routerLink="order-list"><i class="fa-solid fa-clipboard-list"></i>Order list</li>
+                <li routerLink="page">Dashboard</li>
+                <li routerLink="products">All products</li>
+                <li routerLink="cart">Cart</li>
             </ul>
         </div>
 
         <div class="container">
             <div class="nav">
-                <!-- <h1>Hello</h1> -->
                 <div class="search-icon" (click)="toggleSearchDiv()">
                     <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </div>
                 <div class="search-div" *ngIf="isSearchDivVisible">
                     <input type="text" placeholder="Search" >
                     <i (click)="performSearch()" class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="account">
-                    <h3>Admin</h3>
+                    <h3>Buyer</h3>
                 </div>
             </div>
             <div class="content">
