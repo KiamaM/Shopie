@@ -238,3 +238,16 @@
     padding: 8px;
     border-radius: 6px;
 }
+
+/* Responsiveness */
+@media(max-width:780px){
+    .login-box{
+width: 90%;
+height: 70%;
+    }
+    .login-box .links {
+flex-wrap: wrap;
+text-align: center;
+padding-left: 10px;
+    }
+}

@@ -16,7 +16,8 @@ border-bottom: #2E7D32 solid 0.8px;
   }
   
   h4 {
-    color: #4CAF50; /* Green */
+    /* color: #4CAF50; */
+    color: #007780
   }
   
   ul {
@@ -34,4 +35,23 @@ border-bottom: #2E7D32 solid 0.8px;
     border-bottom: 2px solid #2E7D32; 
     cursor: pointer;
   }
-  
+  .icons{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+gap: 30px;
+/* color: #2E7D32; */
+  }
+  .icons i{
+    padding: 10px;
+    /* border:1px solid #2E7D32; */
+       border:1px solid #007780;
+    /* background-color: #2E7D32; */
+    background-color: #007780;
+    border-radius: 50%;
+  }
+  .icons i:hover{
+    transition: ease-in-out;
+    padding: 15px;
+    
+  }

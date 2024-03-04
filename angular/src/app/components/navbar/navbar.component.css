@@ -7,7 +7,7 @@
     height:10vh;
     position: relative;
     z-index:1;
-    width:97vw;
+    width:97.3vw;
   }
   .top-title{
     display: flex;
@@ -46,6 +46,8 @@
     padding: 10px;
     border: 
     #007780 1px solid;
+    /* border: 
+    #2E7D32 1px solid; */
     color: #7f7f7f;
   }
   

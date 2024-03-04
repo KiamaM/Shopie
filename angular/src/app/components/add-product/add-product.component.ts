@@ -15,11 +15,16 @@ export class AddProductComponent {
   successMsg: string = ''
   showSuccessMessage: boolean = false
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private route: Router, private fb: FormBuilder) {
 
   }
 
   onSubmit() {
 
   }
+
+  BackToDashboard(){
+    this.route.navigate(['admin'])
+  }
+
 }
