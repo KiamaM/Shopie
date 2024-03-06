@@ -1,0 +1,56 @@
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Style the date input */
+input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Style the date input on focus */
+input[type="date"]:focus {
+    outline: none;
+    border-color: #006241;
+    /* Change the border color when focused */
+}
+
+.col-12{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    /* border: 1px solid #006241; */
+}
+h3{
+    padding: 10px 0;
+    color: black;
+    font-weight:600;
+}
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.dashboard-table th{
+    color: #7f7f7f;
+}
+th i{
+    color: black;
+}
+.total th{
+    padding:30px 30px 30px 1050px;
+}

@@ -1,0 +1,94 @@
+<!-- <div class="wrapper"> -->
+<div class="products">
+  <div *ngIf="showSuccessMessage" class="successMsg">{{ successMsg }}</div>
+
+  <h2>Product Details</h2>
+
+  <form id="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <!-- Product Name -->
+      <label for="productName">Product Name:</label>
+      <input type="text" id="productName" name="productName" required />
+
+      <!-- Product Description -->
+      <label for="productDescription">Product Description:</label>
+      <textarea
+        id="productDescription"
+        name="productDescription"
+        rows="4"
+        required
+      ></textarea>
+
+      <!-- Product Category -->
+      <label for="productCategory">Product Category:</label>
+      <select id="productCategory" name="productCategory" required>
+        <option value="electronics">Drinks</option>
+        <!-- To be populated dynamically -->
+      </select>
+
+      <!-- Product Stock -->
+      <label for="productStock">Stock Quantity:</label>
+      <input
+        type="number"
+        id="productStock"
+        name="productStock"
+        min="0"
+        required
+      />
+
+      <!-- Product Price -->
+      <div class="price">
+        <div class="price-div">
+          <label for="Price"> Regular Price:</label>
+          <input
+            type="number"
+            id="regularPrice"
+            name="regularPrice"
+            step="0.01"
+            min="0"
+            required
+          />
+        </div>
+        <div class="price-div">
+          <label for="Price"> Sale Price:</label>
+          <input
+            type="number"
+            id="salePrice"
+            name="saleprice"
+            step="0.01"
+            min="0"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="img-and-btn">
+      <!-- Image Upload Section -->
+      <div class="image-upload-section">
+        <label for="productImage">Product Image:</label>
+        <div id="drop-area" (click)="fileInput.click()">
+          <i class="fa-thin fa-image"></i>
+          <p>Drop an image here or browse</p>
+        </div>
+        <input
+          type="file"
+          #fileInput
+          id="fileInput"
+          name="productImage"
+          accept="image/*"
+          required
+        />
+      </div>
+
+      <!-- Add Product Button -->
+      <div class="btn">
+        <button type="submit">Save</button>
+        <button type="submit"(click)="BackToDashboard()">Cancel</button>
+      </div>
+    </div>
+  </form>
+  <script
+    src="https://kit.fontawesome.com/77adb907ec.js"
+    crossorigin="anonymous"
+  ></script>
+</div>
