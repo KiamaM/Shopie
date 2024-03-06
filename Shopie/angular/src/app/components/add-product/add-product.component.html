@@ -1,0 +1,111 @@
+<!-- <div class="wrapper"> -->
+  <div class="products">
+    <div *ngIf="visible2" class="successMsg" style="color:green; font-size: 14; margin-bottom: 5px;">{{ successMsg }} Add another product</div>
+    <div *ngIf="visible" class="errorMsg" style="color: red; font-size: 14; margin-bottom: 5px;">{{ errorMsg }}</div>
+  
+    <h2>Product Details</h2>
+  
+    <form id="productForm" [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <div class="form-section">
+        <!-- Product Name -->
+        <label for="productName">Product Name:</label>
+        <input type="text" formControlName = "productName" id="productName" name="productName" required />
+        <div *ngIf="productForm.get('productName')?.invalid && productForm.get('productName')?.touched" class="errorDiv">Product name is required</div>
+
+  
+        <!-- Product Description -->
+        <label for="description">Product Description:</label>
+        <textarea 
+          formControlName = "description"
+          id="productDescription"
+          name="productDescription"
+          rows="4"
+          required
+        ></textarea>
+        <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="errorDiv">Product description is required</div>
+
+  
+        <!-- Product Category -->
+        <label for="category">Product Category:</label>
+        <select formControlName = "category" id="productCategory" name="productCategory" required>
+          <option value="product">Drinks</option>
+          <option value="product">Pastries</option>
+          <!-- To be populated dynamically -->
+        </select>
+  
+        <!-- Product Stock -->
+        <label for="productStock">Stock Quantity:</label>
+        <input
+          formControlName = "stockQuantity"
+          type="number"
+          id="productStock"
+          name="productStock"
+          min="0"
+          required
+        />
+        <div *ngIf="productForm.get('stockQuantity')?.invalid && productForm.get('stockQuantity')?.touched" class="errorDiv">Stock is required</div>
+
+  
+        <!-- Product Price -->
+        <div class="price">
+          <div class="price-div">
+            <label for="Price"> Regular Price:</label>
+            <input
+              formControlName = "regularPrice"
+              type="number"
+              id="regularPrice"
+              name="regularPrice"
+              step="0.01"
+              min="0"
+              required
+            />
+            <div *ngIf="productForm.get('regularPrice')?.invalid && productForm.get('regularPrice')?.touched" class="errorDiv">Former price is required</div>
+
+          </div>
+          <div class="price-div">
+            <label for="Price"> Sale Price:</label>
+            <input
+              formControlName = "salePrice"
+              type="number"
+              id="salePrice"
+              name="saleprice"
+              step="0.01"
+              min="0"
+              required
+            />
+            <div *ngIf="productForm.get('salePrice')?.invalid && productForm.get('salePrice')?.touched" class="errorDiv">Current price is required</div>
+
+          </div>
+        </div>
+      </div>
+      <div class="img-and-btn">
+        <!-- Image Upload Section -->
+        <div class="image-upload-section">
+          <label for="productImage">Product Image:</label>
+          <div id="drop-area" (click)="fileInput.click()">
+            <i class="fa-thin fa-image"></i>
+            <p>Drop an image here or browse</p>
+          </div>
+          <input
+            type="file"
+            #fileInput
+            id="fileInput"
+            name="productImage"
+            accept="image/*"
+            required
+            (change)="uploadImage($event)"
+          />
+        </div>
+
+        <!-- Add Product Button -->
+        <div class="btn">
+          <button type="submit" [disabled]="productForm.invalid">Save</button>
+          <button routerLink="/admin">Cancel</button>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://kit.fontawesome.com/77adb907ec.js"
+      crossorigin="anonymous"
+    ></script>
+  </div>

@@ -1,0 +1,25 @@
+
+<div class="productViewContainer">
+    <div class="productCard" >
+        <div class="productImg">
+            <img src="{{product.image}}" alt="">
+        </div>
+        <div class="productDescDiv">
+            <p id="name">{{product.productName}}</p>
+
+        </div>
+    </div>
+    <div class="textdesc">
+        <div class="details">
+            <p id="desc">{{product.description}}</p>
+            <p style="text-decoration: line-through;">Was Ksh {{product.regularPrice}}</p>
+            <p>Now only Ksh {{product.salePrice}}</p>
+            <button style="cursor: pointer;" (click)="addToCart(user_id, product.productId)">Add To Cart</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<router-outlet></router-outlet>

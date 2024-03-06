@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="login-wrapper">
+  <div class="login">
+    <div class="login-box">
+      <h2>Sign up</h2>
+      <form #loginForm="ngForm">
+        <div *ngIf="msgVisible" class="errorMsg">{{ errorMsg }}</div>
+        <div *ngIf="msgVisible2" class="successMsg">{{ successMsg }}</div>
+        <div class="user-box">
+          <input ngModel type="email" name="email" />
+          <label>Email*</label>
+        </div>
+        <div class="user-box">
+          <input ngModel type="password" name="password" />
+          <label>Password*</label>
+        </div>
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <button type="submit">Login</button>
+        </a>
+        <ul class="links">
+          <li>Forgot Password?</li>
+          <li routerLink="/register">Sign Up?</li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>

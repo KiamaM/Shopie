@@ -1,0 +1,110 @@
+.cartContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.allProductsDiv{
+width:95vw;
+/* border: 1px solid blue; */
+display: flex;
+justify-content: space-around;
+}
+
+.titleDiv{
+    text-align: center;
+    color: #016241;
+    padding-top: 20px;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.productCard{
+    width:25%;
+    height: 100%;
+    padding-top: 20px;
+    /* border: 1px solid blue; */
+}
+
+.productCard img{
+    width: 100%;
+}
+
+.productDescDiv{
+    text-align: center;
+    width: 100%;
+    /* height: 15vh; */
+    border: 1px solid rgb(206, 204, 204);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* background-color: #CFD74D; */
+    color: #31380C;
+}
+
+.productDescDiv p{
+    margin: 5px;
+}
+
+
+.productDescDiv button{
+    width: 50%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #016241;
+    color: white;
+    border: none;
+}
+
+.checkoutDiv{
+    border: 1px solid rgb(226, 223, 223);
+    width: 20%;
+    padding-top: 20px;
+}
+
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* border: 1px solid blue; */
+
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    color: #333;
+  }
+
+  #total{
+    background-color: #f8f9fa; 
+    font-weight: bold;
+    /* border: 1px solid blue; */
+  }
+
+  .checkoutBtn{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #016241;
+  }
+
+  .checkoutBtn button{
+    width: 80%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
