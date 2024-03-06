@@ -1,0 +1,44 @@
+<div>
+    <div *ngIf="visible2" class="successDiv" style="color: green; text-align: center; width: 100%; font-size: 14px;">{{successMsg}}</div> 
+    <div *ngIf="visible" class="errorDiv" style="color: red; text-align: center;">{{errorMsg}}</div>  
+    
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Product Name</th>
+                <!-- <th>Description</th> -->
+                <th>Category</th>
+                <th>Stock Quantity</th>
+                <th>Regular Price</th>
+                <th>Sale Price</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <td>{{ i + 1 }}.</td>
+                <td>{{ product.productName }}</td>
+                <!-- <td>{{ product.description }}</td> -->
+                <td>{{product.category}}</td>
+                <td>{{ product.stockQuantity }}</td>
+                <td>Ksh {{ product.regularPrice }}</td>
+                <td>Ksh {{ product.salePrice }}</td>
+                <td><img src="{{product.image}}" alt="" width="20"></td>
+                <td>
+                    <span>
+                        <button style="cursor: pointer;" routerLink="/update-product/{{product.productId}}" >Edit</button>
+                    </span>
+                    <span>
+                        <button style="cursor: pointer;" (click)="deleteProduct(product.productId)"  >Delete</button>
+                    </span>
+                </td>
+            </tr>
+            <tr *ngIf="products.length === 0">
+                <td colspan="8">Add a product to view</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<router-outlet></router-outlet>

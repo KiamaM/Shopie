@@ -1,0 +1,108 @@
+<!-- <div class="wrapper"> -->
+    <div class="products">
+        <div *ngIf="visible2" class="successMsg" style="color:green; font-size: 14; margin-bottom: 5px;">{{ successMsg }}</div>
+        <div *ngIf="visible" class="errorMsg" style="color: red; font-size: 14; margin-bottom: 5px;">{{ errorMsg }}</div>
+      
+        <h2>Product Details</h2>
+      
+        <form id="productForm" [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+          <div class="form-section">
+            <!-- Product Name -->
+            <label for="productName">Product Name:</label>
+            <input type="text" formControlName = "productName" id="productName" name="productName" required  [value]="product.productName"/>
+      
+            <!-- Product Description -->
+            <label for="description">Product Description:</label>
+            <textarea  
+              [value]="product.description"
+              formControlName = "description"
+              id="productDescription"
+              name="productDescription"
+              rows="4"
+              required
+            ></textarea>
+      
+            <!-- Product Category -->
+            <label for="category">Product Category:</label>
+            <select formControlName = "category" id="productCategory" name="productCategory" required>
+              <option value="product"  [value]="product.category">Drinks</option>
+              <option value="product">Pastries</option>
+              <!-- To be populated dynamically -->
+            </select>
+      
+            <!-- Product Stock -->
+            <label for="productStock">Stock Quantity:</label>
+            <input
+            [value]="product.stockQuantity"
+              formControlName = "stockQuantity"
+              type="number"
+              id="productStock"
+              name="productStock"
+              min="0"
+              required
+            />
+      
+            <!-- Product Price -->
+            <div class="price">
+              <div class="price-div">
+                <label for="Price"> Regular Price:</label>
+                <input
+                [value]="product.regularPrice"
+                  formControlName = "regularPrice"
+                  type="number"
+                  id="regularPrice"
+                  name="regularPrice"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="price-div">
+                <label for="Price"> Sale Price:</label>
+                <input
+                [value]="product.salePrice"
+                  formControlName = "salePrice"
+                  type="number"
+                  id="salePrice"
+                  name="saleprice"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="img-and-btn">
+            <!-- Image Upload Section -->
+            <div class="image-upload-section">
+              <label for="productImage">Product Image:</label>
+              <div id="drop-area" (click)="fileInput.click()">
+                <i class="fa-thin fa-image"></i>
+                <p>Drop an image here or browse</p>
+              </div>
+              <input
+              [value]="product.image"
+                type="file"
+                #fileInput
+                id="fileInput"
+                name="productImage"
+                accept="image/*"
+                required
+                (change)="uploadImage($event)"
+              />
+            </div>
+    
+            <!-- Add Product Button -->
+            <div class="btn">
+              <button type="submit">Save</button>
+              <button routerLink="admin">Cancel</button>
+            </div>
+          </div>
+        </form>
+        <script
+          src="https://kit.fontawesome.com/77adb907ec.js"
+          crossorigin="anonymous"
+        ></script>
+      </div>
+
+<router-outlet></router-outlet>
