@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserServiceService } from '../../../Services/user-service.service';
 import {  resetUserPassword } from '../../../Interfaces/userInterface';
 import { HttpClientModule } from '@angular/common/http';
-// import { FormGroup, ReactiveFormsModule } from '@angular/forms';
  
 @Component({
   selector: 'app-profile',
@@ -24,7 +23,7 @@ export class ResetComponent {
 successMsg:string =''
 showSuccessMsg:boolean =false
  
-  resetPassword(logins:resetUserPassword): void {
+resetPassword(logins:resetUserPassword): void {
     this.authService.resetPassword(logins ).subscribe(
       (res) => {
         console.log('Password reset successful:', res.message);
