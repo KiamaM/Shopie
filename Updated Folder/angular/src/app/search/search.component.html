@@ -1,0 +1,14 @@
+<form  [formGroup]="filterForm" (ngSubmit)="getFilteredProducts()">
+    <input type="text" placeholder="Filter by city"  formControlName = "search">
+
+    <!-- <button class="primary" type="submit"  >Search</button> -->
+    <input type="submit" value="Submit">
+
+</form>
+
+<div *ngFor="let filteredProduct of filteredProducts">
+    <p>{{filteredProduct.productName}}</p>
+    <!-- <p>{{ filteredProduct.productName | search: filterForm.value.search }}</p> -->
+
+</div>
+<router-outlet></router-outlet>
