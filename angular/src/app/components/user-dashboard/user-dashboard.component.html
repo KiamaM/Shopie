@@ -2,6 +2,7 @@
     <div class="userPage">
         <div class="sidebar">
             <ul>
+                <li (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>Logout</li>
                 <li routerLink="page">Dashboard</li>
                 <li routerLink="products">All products</li>
                 <li routerLink="cart">Cart</li>
@@ -10,6 +11,7 @@
 
         <div class="container">
             <div class="nav">
+                <h1>Welcome {{user.firstName}}</h1>
                 <div class="nav-toggle-bar">
                     <i class="fa-solid fa-bars"></i>
                 </div>

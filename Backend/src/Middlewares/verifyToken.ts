@@ -1,6 +1,6 @@
-import { User } from "../interface/userInterface"
 import { Request, Response, NextFunction } from "express" 
 import jwt from "jsonwebtoken"
+import { User } from "../Interfaces/userInterface"
 
 const SECRET = "shopifyoriginalmaster"
 

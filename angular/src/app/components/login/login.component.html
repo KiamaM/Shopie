@@ -4,15 +4,22 @@
   <div class="login">
     <div class="login-box">
       <h2>Sign up</h2>
-      <form #loginForm="ngForm">
-        <div *ngIf="msgVisible" class="errorMsg">{{ errorMsg }}</div>
-        <div *ngIf="msgVisible2" class="successMsg">{{ successMsg }}</div>
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="form-container">
+       <!-- Display error message when msgVisible is true -->
+    <div *ngIf="msgVisible" class="error-message">
+      {{ errorMsg }}
+    </div>
+    
+    <!-- Display success message when msgVisible2 is true -->
+    <div *ngIf="msgVisible2" class="success-message">
+      {{ successMsg }}
+    </div>
         <div class="user-box">
-          <input ngModel type="email" name="email" />
+          <input type="email" formControlName="email" />
           <label>Email*</label>
         </div>
         <div class="user-box">
-          <input ngModel type="password" name="password" />
+          <input type="password" formControlName="password" />
           <label>Password*</label>
         </div>
         <a href="#">

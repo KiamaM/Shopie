@@ -1,0 +1,19 @@
+<div class="profile-wrapper">
+    <div class="settings">
+      <!-- Reset password starts here -->
+      <form (ngSubmit)="resetPassword()" #resetForm="ngForm">
+        <h2>Password Reset</h2>
+        <div *ngIf="showSuccessMsg" class="successMsg">{{successMsg}}</div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" [(ngModel)]="email" required />
+        
+          <label for="newPassword">New Password:</label>
+          <input type="password" name="newPassword" id="newPassword" [(ngModel)]="newPassword" required />
+        
+          <button type="submit">Reset Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -2,24 +2,24 @@ import mssql from 'mssql'
 import { sqlConfig } from '../Config/sqlConfig';
 
 
-export default class Connection{
+export default class Connection {
 
-    private pool: Promise <mssql.ConnectionPool>
+    private pool: Promise<mssql.ConnectionPool>
 
-    constructor(){
+    constructor() {
         this.pool = this.getConnection()
     }
 
-    getConnection(): Promise<mssql.ConnectionPool>{
+    getConnection(): Promise<mssql.ConnectionPool> {
         const pool = mssql.connect(sqlConfig) as Promise<mssql.ConnectionPool>;
 
         return pool
     }
 
-    createRequest(request: mssql.Request, data:{[c:string | number]:string | number}){
+    createRequest(request: mssql.Request, data: { [c: string | number]: string | number }) {
         const keys = Object.keys(data)
 
-        keys.map((keyName)=>{
+        keys.map((keyName) => {
             const keyValue = data[keyName]
             request.input(keyName, keyValue)
         })
@@ -27,7 +27,7 @@ export default class Connection{
         return request
     }
 
-    async execute(procedureName: string, data:{[c:string | number]: string| number} = {}){
+    async execute(procedureName: string, data: { [c: string | number]: string | number } = {}) {
         let pool = await this.pool
 
         let request = (await pool.request()) as mssql.Request
@@ -39,7 +39,7 @@ export default class Connection{
         return result
     }
 
-    async query(query:string){
+    async query(query: string) {
         const result = (await this.pool).request().query(query)
 
         return result

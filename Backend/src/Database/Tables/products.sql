@@ -12,6 +12,9 @@ CREATE TABLE products(
 ALTER TABLE products
 ADD productName VARCHAR(100)
 
+ALTER TABLE products
+ADD isDeleted BIT DEFAULT 0
+
 UPDATE products SET isDeleted = 0
 
 ALTER TABLE products

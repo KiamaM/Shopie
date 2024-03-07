@@ -28,7 +28,7 @@ export const routes: Routes = [
     {path:'all-products',component:AllProductsComponent},
     {path:'order-list', component:OrderListComponent}
 ]},
-{path:'user/user_id',component:UserDashboardComponent,
+{path:'user/userID',component:UserDashboardComponent,
 children:[
     {path:'page',component:UserPageComponent},
     {path:'products',component:AllProductsComponent}

@@ -19,9 +19,7 @@
     <div class="modal-wrapper" *ngIf="isSidebarOpen" (click)="toggleSidebar()" [class.hidden]="!isSidebarOpen">
         <div class="sidebar-modal" (click)="$event.stopPropagation()">
         <ul>
-          <li routerLink="logout">
-            <i class="fa-solid fa-right-from-bracket"></i>Logout
-          </li>
+          <li (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>Logout</li>
           <li routerLink="dashboard">
             <i class="fa-solid fa-table-columns"></i>Dashboard
           </li>

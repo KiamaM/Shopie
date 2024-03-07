@@ -1,19 +1,18 @@
 import { Router } from "express"; 
-import { deleteUserController, fetchAllUSersController, getSingleUserController, getUserDetails, loginUserControllers, registerUserController, resetPasswordControllers, updateUserControllers } from "../controllers/usersController";
 import { verifyToken } from "../Middlewares/verifyToken";
+import { checkUserDetails, deleteUserController, fetchAllUSersController, getSingleUserController, getUserDetails, loginUserController, registerUserController, resetPasswordController, updateUserController } from "../Controllers/usersController";
 
 const userRouter = Router();
 
 userRouter.post('/register', registerUserController)
-userRouter.get('/all', fetchAllUSersController)
+userRouter.get('/', fetchAllUSersController)
 userRouter.get('/singleUser/:userID',verifyToken ,getSingleUserController)
 userRouter.delete('/delete/:userID', deleteUserController)
-userRouter.put('/update/:userID', updateUserControllers)
-userRouter.post('/login', loginUserControllers)
+userRouter.put('/update/:userID', updateUserController)
+userRouter.post('/login', loginUserController)
 userRouter.get('/userDetails', verifyToken , getUserDetails)
-userRouter.post('/reset-password', resetPasswordControllers);
+userRouter.post('/reset-password',verifyToken, resetPasswordController);
+userRouter.get('/checkdetails', verifyToken, checkUserDetails)
 
-
-// userRouter.post('/initiate-password-reset', initiatePasswordResetController);
 
 export default userRouter;

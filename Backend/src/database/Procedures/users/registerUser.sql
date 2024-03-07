@@ -13,5 +13,5 @@ BEGIN
      VALUES(@userID,@firstName,@lastName,@email,@password)
 END
 
-DROP PROCEDURE registerUser;
+-- DROP PROCEDURE registerUser;
 
