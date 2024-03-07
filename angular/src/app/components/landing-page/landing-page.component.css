@@ -1,0 +1,77 @@
+.section{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+}
+
+.about-us-wrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.about-img{
+    flex: 1;
+    width: 40vw;
+    height: 100%;
+}
+.about-info{
+    flex: 1;
+    background-color: #402218;
+    width: 40vw;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: 
+    #dcbea3;
+    padding: 10px;
+
+}
+.about-img img{
+    width: 50vw;
+    height: 45vh;
+    object-fit: cover;
+}
+
+.products-display{
+ display: flex;
+ align-items: center;
+ justify-content: center;  
+ padding: 20px; 
+ margin-top: 10px;
+}
+.app-navbar {
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  .nav-pages {
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  /* ... Other styles ... */
+  
+  /* Responsiveness */
+  @media (max-width: 780px) {
+    .app-navbar {
+      width: 100%;
+    }
+  
+    .nav-pages {
+      width: 100%;
+    }
+  
+    .section{
+        flex-direction: column;
+    }
+    .about-us-wrapper{
+        flex-direction: column;
+    }
+    .about-img img{
+        width:100vw;
+    }
+    .app-footer{
+        flex-wrap: wrap;
+    }
+}

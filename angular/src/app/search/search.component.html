@@ -1,0 +1,19 @@
+<form  [formGroup]="filterForm" (ngSubmit)="getFilteredProducts()">
+    <input type="text" placeholder="Search here"  formControlName = "search">
+
+    <!-- <button class="primary" type="submit"  >Search</button> -->
+    <input type="submit" value="Submit">
+
+</form>
+
+    <div class="productCard" *ngFor="let filteredProduct of filteredProducts;">
+        <div class="productImg" >
+            <img src="{{filteredProduct.image}}" alt="" width="300" >
+        </div>
+        <div class="productDescDiv">
+            <p id="name">{{filteredProduct.productName}}</p>
+            <!-- <p id="desc">{{product.description}}</p> -->
+            <button style="cursor: pointer;" routerLink="/view-products/{{filteredProduct.productId}}">View Product</button>
+        </div>
+    </div>
+

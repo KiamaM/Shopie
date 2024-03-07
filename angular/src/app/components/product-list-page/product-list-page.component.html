@@ -1,0 +1,23 @@
+
+<div class="productsContainer">
+    <div class="titleDiv">
+        <p>Perfect deliciousness</p>
+        <p *ngIf="noProducts" style="font-size: 15px; margin-top: 40px; color: black;">No products to show for now</p>
+    </div>
+    <div class="allProductsDiv">
+        <div *ngIf="visible2" class="successDiv"  style="color: green; text-align: center; width: 100%; font-size: 14px;">{{successMsg}}</div> 
+        <div *ngIf="visible" class="errorDiv" style="color: red; text-align: center;">{{errorMsg}}</div>  
+        <div class="productCard" *ngFor="let product of productsArray;">
+            <div class="productImg" >
+                <img src="{{product.image}}" alt="">
+            </div>
+            <div class="productDescDiv">
+                <p id="name">{{product.productName}}</p>
+                <!-- <p id="desc">{{product.description}}</p> -->
+                <button style="cursor: pointer;" routerLink="/view-products/{{product.productId}}">View Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

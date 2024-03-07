@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
-import { UserResponse, Users, ViewUsers, loginDetails, signUpDetails, updatedUser } from '../intefaces/user.interface';
+// import { UserResponse, Users, ViewUsers, loginDetails, signUpDetails, updatedUser } from '../Interfaces/user.interface;
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, tap } from 'rxjs';
+import { UserResponse, Users, ViewUsers, loginDetails, resetUserPassword, signUpDetails, updatedUser } from '../Interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  // public getAuthUser(): any {
+  //   return this.user;
+  // }
+
+  // public setUser(user: any): void {
+  //   this.user = user;
+  //   this.getAuthUser()
+  // }
+  // private user :UserResponse
 
   private readonly USER_KEY = 'currentUser';
 
   setUser(user: UserResponse): void {
-    
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+
+    localStorage.setItem("currentUser", user.firstName);
   }
 
   getStoredUser(): any {
-    const storedUser = localStorage.getItem(this.USER_KEY);
-    return storedUser ? JSON.parse(storedUser) : null;
+    const storedUser = localStorage.getItem("currentUser");
+    return storedUser 
   }
 
   clearUser(): void {
@@ -27,9 +37,9 @@ export class UserService {
   token = localStorage.getItem('token') as string;
 
   constructor(private http: HttpClient) { }
-  
 
-  storeUserDetails(){
+
+  storeUserDetails() {
 
   }
   signUpUser(sign_details: signUpDetails) {
@@ -50,18 +60,37 @@ export class UserService {
       }).pipe(tap(details => console.log(details)))
   }
 
+  // getUserDetails(token: string) {
+  //   this.readToken(token).pipe(map(res => ({
+  //     userID: res.info.userID,
+  //     firstName: res.info.firstName,
+  //     lastName: res.info.lastName,
+  //     email: res.info.email,
+  //     role: res.info.role
+  //   }))).subscribe(
+  //     {
+  //       next: (info) => {
+  //         console.log({ info });
+  //         this.setUser(info);
+  //       },
+  //       error: error => {
+  //         console.log("Error occurred : ", error);
+  //       }
+  //     }
+  //   )
+  // }
 
-
-  resetPassword(email: string, password: string): Observable<any> {
-    const resetData = { email, password };
-    {
-      return this.http.put<{ message: string, error: string }>('http://localhost:4500/users/reset_pwd', resetData);
-    }
-  }
+resetPassword(logins: resetUserPassword): Observable<any> {
+  const resetData = { ...logins }; // Spread the properties of logins into resetData
+  return this.http.put<{ message: string, error: string }>('http://localhost:4500/users/reset_pwd', resetData);
+}
 
   getAllUsers() {
     return this.http.get<{ users: ViewUsers[], error: string }>(`http://localhost:4500/users`, {
-
+      // headers: new HttpHeaders({
+      //   'Content-type': 'application/json',
+      //   // 'token': this.token
+      // })
     })
   }
   getOneUser(id: string) {
