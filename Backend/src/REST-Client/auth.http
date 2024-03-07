@@ -1,0 +1,65 @@
+### register
+POST http://localhost:5000/users/register/
+Content-Type: application/json
+
+{
+    "firstName": "Daniel",
+    "lastName": "Kitheka",
+    "email": "danielkitheka@gmail.com",
+    "password": "12345678"
+}
+
+### login 
+POST http://localhost:5000/users/login/
+Content-Type: application/json
+
+{
+   "email": "danielkitheka@gmail.com",
+    "password": "0987654"
+}
+
+### fetching all users
+GET http://localhost:5000/users/all
+
+
+###update user
+PUT http://localhost:5000/users/update/29e2a0d1-fbb4-46e0-959e-3970ccf57da8
+Content-Type: application/json
+
+{
+    "firstName": "meshack2 kipsang2",
+     "lastName": "meshack2 kipsang2",
+    "email": "meshack3@gmail.com"
+}
+
+### fetching single user
+GET http://localhost:5000/users/singleUser/29e2a0d1-fbb4-46e0-959e-3970ccf57da8
+token:  
+
+
+### fetching user
+GET http://localhost:3500/users/userDetails/
+token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlNTFhNTQ4Yy0xNzdmLTQ0OWItOWI1Zi05OGE2NGJiMmQ5NGYiLCJmdWxsTmFtZSI6IjEyMzQ1Njc4QEpvIiwiZW1haWwiOiJqb3NodWFvbW9uZGkzMzM0QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsInJlc2V0UGFzc3dvcmRUb2tlbiI6bnVsbCwicmVzZXRQYXNzd29yZEV4cGlyZXMiOm51bGwsIndlbGNvbWVkIjp0cnVlLCJwcm9maWxlSW1hZ2UiOiJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUFBQVFBQkFBRC8yd0NFQUFrR0J3Z0hCZ2tJQndnS0Nna0xEUllQRFF3TURSc1VGUkFXSUIwaUlpQWRIeDhrS0RRc0pDWXhKeDhmTFQwdE1UVTNPam82SXlzL1JEODRRelE1T2pjQkNnb0tEUXdOR2c4UEdqY2xIeVUzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM04vL0FBQkVJQUlZQWhnTUJJZ0FDRVFFREVRSC94QUFjQUFFQUFRVUJBUUFBQUFBQUFBQUFBQUFBQmdFREJBVUhBZ2oveEFBOEVBQUJCQUVCQlFRSUJBTUpBUUFBQUFBQkFBSURCQkVGQmhJaE1VRVRVV0Z4QnlJeVFvR1JvYkVVSTFMQmNwTGhKQ1l6UTFOVlk4THdGdi9FQUJzQkFBSURBUUVCQUFBQUFBQUFBQUFBQUFBRkF3UUdBZ0VILzhRQUtoRUFBZ0lCQXdJR0FRVUJBQUFBQUFBQUFBRUNBd1FSRWpFRklSTWlNa0ZSWVpFVmNZR2hzUlQvMmdBTUF3RUFBaEVERVFBL0FPNG9pSUFJaUlBSXFaVk04Y0lBOUlzTzdxZE9pM2V1V29ZUi93QWp3RnBwOXVkQmljV2kyNlFqL1RpY1I4OExpVmtZOHNsaFJiWjZJdC93U1ZGRXg2UWRFSndYV1I0OWlWbDF0dE5Dc093MjgyTTkwckhNK3BHRnlycTN3eVNXSGtSV3JnL3dTRkZZZ3RSV1l4SlhsamxZZmVZNEVLOWxTYWxaOWlxSWk5QUlpSUFJaUlBSWlJQUtoSUNIa296dGR0UEhvY0haUTdzbDZSdVdSbmswZnFLNWxKUldySktxcDJ6VUlMVnMyT3VhN1IwYURmdVM0Y2ZZamJ4Yy93QWd1YzYxdHhxZW9GMGRVL2c0RDBaeGVmTjNUNEtQWExkaTdaZll0eXVsbWVjdWM3N2VBVmhLcnN1YyswZXlOVmg5SXFwVzZ6elArajA5enBIbDhqblBlVHhjNDVKWGxhcld0WEduNGloRFh6dUdRSGNtanZLajc5YTFGN2lmeEpibm8xb0M2cHdyYlZ1SmNqcWxHUEx3OU5YOUUyd3FLR1I2NXFNZitlSGp1ZXdGWlVXMDFvSDgyR0Y0OE10WFV1bTNMalFqaDFyR2wyZXFKZlZ0MktVb2xwenlRdkhXTnhHVk10QzlJRThKYkRyRWZheDh1M2pHSER6SFg0TG0yIiwiaWF0IjoxNzAxMjM3NDczLCJleHAiOjE3MDE0MTAyNzN9.60M_G-fEaEu6KVQ44CurXc55fHr_7V1HaMwKT8h_BK4
+
+
+### reset password
+PUT http://localhost:5000/users/reset-password/
+Content-Type: application/json
+
+{
+  "email": "rebeccabiwot@gmail.com",
+    "newPassword": "12345678"
+}
+
+
+### checking user details
+GET http://localhost:5000/users/checkUserDetails/
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJiNjc3ZDk2NC01ZTIxLTQyMDItOGJjNC1iNzc5ZDcyMzExZTAiLCJmdWxsTmFtZSI6Impvc2h1YSBvbW9uZGkiLCJlbWFpbCI6Impvc2h1YW9tb25kaTMzMzRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwicmVzZXRQYXNzd29yZFRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkRXhwaXJlcyI6bnVsbCwid2VsY29tZWQiOnRydWUsImlhdCI6MTcwMTE4NzE4OSwiZXhwIjoxNzAxMzU5OTg5fQ.0hRlKsXGtEKP8_MP--ROem0zMLUBlePZA2-VFI2mmBY
+
+
+#### deleting user
+DELETE http://localhost:3500/users/delete/0df09010-748d-40a4-a46c-8443aed78f6c/
+
+
+
+

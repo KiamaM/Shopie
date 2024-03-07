@@ -13,6 +13,7 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
 export const routes: Routes = [
+
     {
         path: '', redirectTo: '', pathMatch: 'full'
     },

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
 export class NavbarComponent {
   currentroute = (this.route.snapshot.routeConfig?.path);
   token = localStorage.getItem('token') as string
@@ -20,6 +21,8 @@ export class NavbarComponent {
       }
     }
   }
+
+
   title = "PIE"
 
   isMenuOpen = false;

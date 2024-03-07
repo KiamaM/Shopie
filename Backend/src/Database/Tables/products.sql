@@ -8,7 +8,6 @@ CREATE TABLE products(
     image VARCHAR(200) NOT NULL,    
 )
 
-
 ALTER TABLE products
 ADD productName VARCHAR(100)
 

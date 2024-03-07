@@ -6,10 +6,11 @@ CREATE TABLE Users(
     password VARCHAR(100) NOT NULL,
     role VARCHAR(100) DEFAULT 'customer',
     welcomed BIT Default 0,
-)
+);
 
 select * from Users
 
 UPDATE Users SET role='Admin' where email='meshackkorir@gmail.com' 
 
 DROP TABLE Users
+

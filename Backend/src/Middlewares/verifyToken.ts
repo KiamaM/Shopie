@@ -1,4 +1,4 @@
-import { User } from "../interface/userInterface"
+import { User } from "../Interfaces/userInterface"
 import { Request, Response, NextFunction } from "express" 
 import jwt from "jsonwebtoken"
 

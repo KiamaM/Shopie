@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { sqlConfig } from "../config/sqlConfig"; 
 import bcrypt from 'bcrypt'
 import { v4 } from 'uuid'
-import Connection from "../dbHelpers/dbHelpers";
+import Connection from "../dbHelper/dbhelper";
 import { regUserValidation, validateUpdateuser, loginUserValidation} from "../Validators/validators"; 
 import mssql from 'mssql'
 import jwt from 'jsonwebtoken'
@@ -24,9 +24,15 @@ export const registerUserController = async (req: Request, res: Response) => {
       })
     }
 
+    else{
+
+    
+
 
     const userID = v4()
+
     const hashedpwd = await bcrypt.hash(password, 5);
+
     const pool = await mssql.connect(sqlConfig)
 
     const results = pool.request()
@@ -38,8 +44,11 @@ export const registerUserController = async (req: Request, res: Response) => {
       .execute('registerUser')
 
       return res.status(201).json({
-        message: 'User registered successfully'
+        message: 'User Registered Successfully'
       })
+
+    }
+
     } catch (error) {
         return res.status(404).json({
           error: error,
@@ -87,68 +96,11 @@ export const loginUserControllers = async (req: Request, res: Response) => {
           message: 'User Logged in successfully',
           token
         })
-      } else {
+      }  else {
         return res.json({
           error: "Email not found"
         })
       }
-    } catch (error) {
-      return res.json({
-        error: error
-      })
-    }
-  }
-
-export const fetchAllUSersController = async (req: Request, res: Response) => {
-    try{
-
-        const pool = await mssql.connect(sqlConfig);
-        let users = (await pool.request().execute('getAllUsers')).recordset
-
-        return res.status(201).json(users)
-
-    } catch (error) {
-        return res.json({
-            error: error
-        })
-    }
-}
-
-export const getSingleUserController = async (req: Request, res: Response) => {
-    try {
-      const userID = req.params.userID;
-      console.log(userID);
-      if (!userID) return res.status(403).send({ message: "Id is required" });
-  
-  
-      const result = await dbHelpers.execute('getSingleUser', { userID });
-  
-      res.json(result.recordset);
-  
-    } catch (error) {
-      return res.json(400).json({
-        error: error
-      })
-    }
-  };
-
-export const deleteUserController = async (req: Request, res: Response) => {
-    try {
-      const { userID } = req.params
-  
-      const deleteUser = await dbHelpers.execute('deleteUser', { userID })
-
-      if(deleteUser.rowsAffected[0]== 0){
-        return res.json({
-          message: 'User not found'
-        })
-
-      } else {
-        return res.json({
-          message: 'User deleted successfully'
-        })
-      }
-      
     } catch (error) {
       return res.json({
         error: error
@@ -185,6 +137,67 @@ export const deleteUserController = async (req: Request, res: Response) => {
     }
   }
 
+
+export const fetchAllUSersController = async (req: Request, res: Response) => {
+    try{
+
+        const pool = await mssql.connect(sqlConfig);
+        let users = (await pool.request().execute('getAllUsers')).recordset
+
+        return res.status(201).json(users)
+
+    } catch (error) {
+        return res.json({
+            error: error
+        })
+    }
+}
+
+
+export const getSingleUserController = async (req: Request, res: Response) => {
+    try {
+      const userID = req.params.userID;
+      console.log(userID);
+      if (!userID) return res.status(403).send({ message: "Id is required" });
+  
+  
+      const result = await dbHelpers.execute('getSingleUser', { userID });
+  
+      res.json(result.recordset);
+  
+    } catch (error) {
+      return res.json(400).json({
+        error: error
+      })
+    }
+  };
+
+
+export const deleteUserController = async (req: Request, res: Response) => {
+    try {
+      const { userID } = req.params
+  
+      const deleteUser = await dbHelpers.execute('deleteUser', { userID })
+
+      if(deleteUser.rowsAffected[0]== 0){
+        return res.json({
+          message: 'User deleted successfully'
+        })
+
+      } else {
+        return res.json({
+          message: 'User not found'
+        })
+      }
+      
+    } catch (error) {
+      return res.json({
+        error: error
+      })
+    }
+  }
+
+
     
 export const getUserDetails = async (req: ExtendeUser, res: Response) => {
   try {
@@ -218,7 +231,9 @@ export const getUserDetails = async (req: ExtendeUser, res: Response) => {
   }
 }
 
+
 export const resetPasswordControllers = async (req: Request, res: Response) => {
+  
   try {
     const { email, newPassword } = req.body;
     const test = req.body

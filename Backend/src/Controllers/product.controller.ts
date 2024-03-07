@@ -2,125 +2,185 @@ import { Request, Response } from "express"
 import { v4 } from "uuid"
 import Connection from "../dbHelper/dbhelper"
 import { products } from "../Interfaces/product.interface"
-
-
-
+import { sqlConfig } from "../config/sqlConfig"
+import mssql from 'mssql'
 
 //Create a new instance of the dbhelper class
 const dbhelper = new Connection
 
 
-export const createProduct = async (req:Request, res:Response)=>{
+export const AddProduct = async (req: Request, res: Response) => {
     try {
-       const id = v4()
-   
-       const{productName,description, category, stockQuantity,regularPrice,salePrice, image}:products = req.body
-   
-   
-       let result = await (dbhelper.execute('createProduct', {
-        productId:id, productName,description, category, stockQuantity,regularPrice,salePrice, image
-       }))
-   
-       if(result.rowsAffected[0] > 1){
-           return res.json({
-               error:'Product creation failed'
-           })
-       }else{
-           
-       return res.json({
-           message:'Product added successfully',
-           messages:result.recordset
-   
-       })
-       }
-   
-    } catch (error:any) {
-       return res.json({
-           error:error.originalError.info.message
-       })
-    }
-   }
-
-
-   export const getProducts = async(req:Request, res:Response)=>{
-    try {
-
-        let products = (await (dbhelper.execute('getAllProducts'))).recordset
-
-
-        return res.json({
-            products: products
-        })
-    } catch (error:any) {
-        return res.json({
-            error:error.originalError.info.message
-        })
-    }
-}
-
-export const getOneProduct = async(req:Request, res:Response)=>{
-    try {
-        const id = req.params?.['id']
-
-        let product = (await dbhelper.execute("getOneProduct", {productId:id})).recordset
-
-
-        return res.json({
-            product
-        })
+      const { name, shortDescription, price, image } = req.body;
+  
+      const pool = await mssql.connect(sqlConfig);
+  
+      const ProductID = v4();
+  
+      const request = pool.request();
+  
+      request.input("ProductID", mssql.UniqueIdentifier, ProductID);
+      request.input("name", mssql.VarChar(200), name);
+      request.input("shortDescription", mssql.VarChar(300), shortDescription);
+      request.input("price", mssql.Int, price);
+      request.input("image", mssql.VarChar(1000), image);
+  
+      const result = await request.execute("AddProduct");
+  
+      if (result.rowsAffected[0] === 1) {
+        return res
+          .status(200)
+          .json({ success: true, message: "Product added successfully." });
+      } else {
+        return res
+          .status(400)
+          .json({
+            success: false,
+            message: "Product with the same name already exists.",
+          });
+      }
     } catch (error) {
-        return res.json(error)
+      console.error(error);
+  
+      return res.status(500).json({
+        error: "Internal Server Error",
+      });
     }
-}
-
-export const deleteProduct = async(req:Request, res: Response)=>{
+  };
+  
+  
+  // Update user status
+  export const UpdateProductControllers = async (req: Request, res: Response) => {
     try {
-        const productId:any = req.params?.['id']
-
-        const result = await dbhelper.execute("deleteProduct",{productId})
-
-        
-
+      const {name, shortDescription, price, image } = req.body;
+      const {productID} =req.params
+      if (! productID) {
+        return res
+          .status(400)
+          .json({ error: "product not found" });
+      }
+      const pool = await mssql.connect(sqlConfig);
+  
+      const updatedProduct = await pool.request().input("productID",
+      mssql.VarChar(100),productID).input("name",mssql.VarChar(200),name).input("shortDescription", mssql.VarChar(300), shortDescription).input("price",
+      mssql.Int,price).input("image", mssql.VarChar(1000),image).execute("UpdateProduct");
+  
+  
+      if (updatedProduct.returnValue === 0) {
         return res.status(200).json({
-            message: "Product deleted successfully"
-        })
-
-
-    } catch (error) {
-        return res.status(500).json({ 
-            error: "Internal Server Error" 
+          success: true,
+          message: "Product updated successfully",
         });
+      } else {
+        return res.status(500).json({
+          success: false,
+          message: "Failed to update product",
+        });
+      }
+    } catch (error) {
+      return res.json({
+        error: error,
+      });
     }
-}
-
-export const updateProduct = async(req:Request, res: Response)=>{
+  };
+  
+  
+  // Get single product
+  export const getSingleProduct = async (req: Request, res: Response) => {
     try {
-        const id = req.params?.['id']
-
-        const{productId,productName, description, category, stockQuantity,regularPrice,salePrice, image}:products = req.body
-
-        const result = await dbhelper.execute("updateProduct", {
-            productId : id,
-            productName:productName,
-            description : description,
-            category : category,
-            stockQuantity : stockQuantity,
-            regularPrice : regularPrice,
-            salePrice : salePrice,
-            image : image 
-        })
-
-        console.log(result);
-        
-
-        return res.status(200).json({
-            message: "Product details updated successfully"
-        })
-
-
+      const { productID } = req.params;
+  
+      if (!productID) {
+        return res.status(400).json({ error: "name parameter is required." });
+      }
+  
+      const pool = await mssql.connect(sqlConfig);
+  
+      const request = pool.request();
+  
+      request.input("productID", mssql.VarChar(100), productID);
+  
+      const result = await request.execute("getSingleProduct");
+  
+      if (result.recordset.length > 0) {
+        return res.json(
+          result.recordset[0]
+        );
+      } else {
+        return res
+          .status(404)
+          .json({ success: false, message: "Product not found." });
+      }
     } catch (error) {
-        return res.status(500).json({ 
-            error: "Internal Server Error" 
-        });
+      return res.json({
+        error: error,
+      });
     }
-}
+  };
+  
+  export const fetchAllProductsControllers=async(req:Request,res:Response)=>{
+  
+    try{
+      const pool=await mssql.connect(sqlConfig);
+  
+    const result=await pool.request().execute('fetchAllProducts')
+  
+    const fetchedProduct=result.recordset
+  // console.log(fetchedProduct);
+  
+    return res.json(fetchedProduct)
+    
+    }catch(error){
+      return res.json({
+        error:error
+      })
+    }
+  }
+  
+  
+  //delete product
+  export const deleteProduct = async (req: Request, res: Response) => {
+    try {
+      const { ProductID } = req.params;
+  
+      console.log(ProductID);
+      
+  
+      if (!ProductID) {
+        return res.status(400).json({ error: "productID is required." });
+      }
+  
+      const pool = await mssql.connect(sqlConfig);
+  
+      const request = pool.request().input("ProductID", mssql.VarChar(100), ProductID);
+  
+      const result = await request.execute("deleteProduct");
+  
+      const deletionResult = result.recordset[0].DeletionResult;
+  
+      console.log(deletionResult);
+      
+      if (deletionResult === 1) {
+        return res
+          .status(200)
+          .json({ success: true, message: "Product deleted successfully." });
+      } else if (deletionResult === -2) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Product not found." });
+      } else {
+        return res
+          .status(500)
+          .json({ success: false, message: "Failed to delete product." });
+      }
+    } catch (error) {
+      return res.json({
+        error: error,
+      });
+    }
+  };
+  
+  
+  function execute(arg0: string, arg1: { ProductID: string; name: any; shortDescription: any; price: any; image: any; }) {
+      throw new Error("Function not implemented.");
+  }

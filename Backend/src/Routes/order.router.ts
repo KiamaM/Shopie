@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { addToCart, removeFromCart } from "../Controllers/orders.controller";
-
+import { addToCart, removeFromCart } from "../controllers/orders.controller";
 
 const ordersRouter = Router()
 

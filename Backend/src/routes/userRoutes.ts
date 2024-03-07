@@ -11,7 +11,7 @@ userRouter.delete('/delete/:userID', deleteUserController)
 userRouter.put('/update/:userID', updateUserControllers)
 userRouter.post('/login', loginUserControllers)
 userRouter.get('/userDetails', verifyToken , getUserDetails)
-userRouter.post('/reset-password', resetPasswordControllers);
+userRouter.put('/reset-password', resetPasswordControllers);
 
 
 // userRouter.post('/initiate-password-reset', initiatePasswordResetController);
