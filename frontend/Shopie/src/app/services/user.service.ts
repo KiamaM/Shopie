@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserResponse, Users, ViewUsers, loginDetails, signUpDetails, updatedUser } from '../intefaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,9 +45,20 @@ export class UserService {
     return this.http.post<{ users: Users[], message: string, error: string }>('http://localhost:4500/users/register', sign_details)
   }
 
+  // loginUser(user_details: loginDetails) {
+  //   return this.http.post<{ message: string, token: string, role: string, error: string }>('http://localhost:4500/users/login', user_details)
+  // }
   loginUser(user_details: loginDetails) {
     return this.http.post<{ message: string, token: string, role: string, error: string }>('http://localhost:4500/users/login', user_details)
+      .pipe(
+        tap(response => console.log('Login response:', response)),
+        catchError(error => {
+          console.error('Login error:', error);
+          throw error;
+        })
+      );
   }
+  
 
   readToken(token: string) {
     return this.http.get<{ info: { userID: string, firstName: string, lastName: string, email: string, role: string } }>('http://localhost:4500/users/checkdetails',
